@@ -1,0 +1,32 @@
+<widget name="static-data"
+    factory-class="com.aviarc.framework.toronto.widget.DefaultWidgetProviderFactoryImpl"
+    rendered-node-factory="drawingboard.widgets.StaticData">
+    <attributes></attributes>
+    <sub-elements>
+        <sub-element name="data" singleton="y">
+            <sub-elements>
+                <sub-element name="dataset">
+                    <attributes>
+                        <attribute name="name" mandatory="y"/>
+                    </attributes>
+                    <sub-elements>
+                        <sub-element name="row">
+                            <attributes>
+                                <attribute name="current"/>
+                            </attributes>
+                            <sub-elements>
+                                <sub-element name="field">
+                                    <attributes>
+                                        <attribute name="name" mandatory="y"/>
+                                        <attribute name="value" mandatory="y"/>
+                                    </attributes>
+                                </sub-element>
+                            </sub-elements>
+                        </sub-element>
+                    </sub-elements>
+                </sub-element>
+            </sub-elements>
+        </sub-element>
+    </sub-elements>
+    <children allowed="y"/>
+</widget>

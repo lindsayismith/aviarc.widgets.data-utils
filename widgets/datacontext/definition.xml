@@ -1,0 +1,20 @@
+<widget name="datacontext" 
+        factory-class="com.aviarc.framework.toronto.widget.DefaultWidgetProviderFactoryImpl"
+        rendered-node-factory="nz.co.aviarc.featuremanager.widgets.DataContextNodeFactory">
+    <attributes>
+        <attribute name="workflow" type="action" />
+    </attributes>
+    <sub-elements>
+        <sub-element name="parameters" singleton="y">
+            <sub-elements>
+                <sub-element name="param">
+                    <attributes>
+                        <attribute name="name" mandatory="y" />
+                        <attribute name="value" mandatory="y" />                        
+                    </attributes>
+                </sub-element>
+            </sub-elements>
+        </sub-element>
+    </sub-elements>
+    <children allowed="y"/>
+</widget>
