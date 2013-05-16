@@ -1,17 +1,41 @@
 <widget name="datacontext" 
         factory-class="com.aviarc.framework.toronto.widget.DefaultWidgetProviderFactoryImpl"
-        rendered-node-factory="nz.co.aviarc.featuremanager.widgets.DataContextNodeFactory">
+        rendered-node-factory="com.aviarc.widgets.datacontext.DataContextNodeFactory">
     <attributes>
-        <attribute name="workflow" type="action" />
+        <attribute name="workflow"/>
     </attributes>
     <sub-elements>
-        <sub-element name="parameters" singleton="y">
+        <sub-element name="workflow-parameters" singleton="y">
             <sub-elements>
                 <sub-element name="param">
                     <attributes>
                         <attribute name="name" mandatory="y" />
                         <attribute name="value" mandatory="y" />                        
                     </attributes>
+                </sub-element>
+            </sub-elements>
+        </sub-element>
+        <sub-element name="static-datasets" singleton="y">
+            <sub-elements>
+                <sub-element name="dataset">
+                    <attributes>
+                        <attribute name="name" mandatory="y"/>
+                    </attributes>
+                    <sub-elements>
+                        <sub-element name="row">
+                            <attributes>
+                                <attribute name="current"/>
+                            </attributes>
+                            <sub-elements>
+                                <sub-element name="field">
+                                    <attributes>
+                                        <attribute name="name" mandatory="y"/>
+                                        <attribute name="value" mandatory="y"/>
+                                    </attributes>
+                                </sub-element>
+                            </sub-elements>
+                        </sub-element>
+                    </sub-elements>
                 </sub-element>
             </sub-elements>
         </sub-element>

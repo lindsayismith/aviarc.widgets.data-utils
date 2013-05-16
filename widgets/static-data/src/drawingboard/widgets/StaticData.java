@@ -26,16 +26,7 @@ import com.aviarc.framework.xml.compilation.ResolvedElementContext;
 
 public class StaticData implements DefaultRenderedNodeFactory {
 	private static final long serialVersionUID = 1L;
-    private DefaultDefinitionFile _definition;
  
-    /*
-     * (non-Javadoc)
-     * @see com.aviarc.framework.toronto.widget.DefaultRenderedNodeFactory#initialize(com.aviarc.framework.toronto.widget.DefaultDefinitionFile)
-     */
-    public void initialize(DefaultDefinitionFile definitionFile) {
-        // Store the definition - our rendered node class requires it as it derives from DefaultRenderedNodeImpl
-        this._definition = definitionFile;
-    }
  
     /*
      * (non-Javadoc)
@@ -116,5 +107,10 @@ public class StaticData implements DefaultRenderedNodeFactory {
 
 
     	return result;
+    }
+
+    public void initialize(DefaultDefinitionFile definitionFile) {
+        
+        
     }
 }

@@ -1,4 +1,4 @@
-package nz.co.aviarc.featuremanager.widgets;
+package com.aviarc.widgets.datacontext;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +33,8 @@ import com.aviarc.framework.toronto.screen.ScreenRenderingContext;
  */
 public class DataContextClientDataContextNodeImpl extends com.aviarc.framework.toronto.datacontext.DefaultClientDataContextNodeImpl {
 
+    private static final long serialVersionUID = 0L;
+    
     private Set<String> _clientSideDatasetNames;
     private Map<String, Dataset> _localDatasets;
 

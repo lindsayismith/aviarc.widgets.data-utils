@@ -1,10 +1,13 @@
-package nz.co.aviarc.featuremanager.widgets;
+package com.aviarc.widgets.datacontext;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
+
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import com.aviarc.core.InterfaceQuery;
 import com.aviarc.core.UnsupportedInterfaceException;
@@ -14,6 +17,7 @@ import com.aviarc.core.logging.LoggingHub;
 import com.aviarc.framework.toronto.datacontext.AbstractDataContextNodeImpl;
 import com.aviarc.framework.toronto.datacontext.ClientDataContextNode;
 
+import com.aviarc.framework.toronto.screen.RenderedNode.XHTMLCreationContext;
 import com.aviarc.framework.toronto.screen.ScreenRenderingContext;
 import com.aviarc.framework.toronto.screen.TorontoClientSideCapable;
 import com.aviarc.framework.toronto.screen.TorontoClientSideCapableCreator;
@@ -29,6 +33,8 @@ import com.aviarc.framework.toronto.screen.postback.DatasetDependencyList;
  *
  */
 public class DatasetIsolatingDataContextNodeImpl extends AbstractDataContextNodeImpl {
+    
+
     private static final long serialVersionUID = 0L;
 
     private Set<String> _upstreamRequiredDatasets;
@@ -103,9 +109,7 @@ public class DatasetIsolatingDataContextNodeImpl extends AbstractDataContextNode
         Set<String> upstreamRequiredDatasetNames = new HashSet<String>();
         
         // All the datasets we have locally
-        Map<String, Dataset> localDatasets = this.getLocalDatasets();
-
-        LinkedList<Dataset> ds = new LinkedList<Dataset>(localDatasets.values());
+        Map<String, Dataset> localDatasets = this.getLocalDatasets();        
 
         DatasetDependencyList ddl = new DatasetDependencyList();
         
@@ -148,31 +152,7 @@ public class DatasetIsolatingDataContextNodeImpl extends AbstractDataContextNode
             }
         }
         
-        /*while (ds.size() > 0) {
-            Dataset dataset = ds.poll();
-
-            checkDatasetPermissions(dataset);
-
-            try {
-                TorontoClientSideCapableCreator tcscc = InterfaceQuery.queryInterface(dataset, TorontoClientSideCapableCreator.class);
-                TorontoClientSideCapable tcsc = tcscc.makeClientSideCapable(getRenderingContext());
-
-                // datasets required by these ones are added to our list
-                Set<String> requiredDatasets = tcsc.getRequiredDatasets();
-                if (requiredDatasets != null) {
-                    downstreamRequiredDatasetNames.addAll(requiredDatasets);
-                }
-
-                ddl.addDataset(dataset);
-                clientSideDatasets.put(dataset.getName(), tcsc);
-            } catch (UnsupportedInterfaceException e) {
-                // Just log the error for now
-                logger.error("DatasetIsolatingDataContextNodeImpl: Cannot resolve Dataset '" + dataset.getName() +":" + dataset.getID() +
-                            "' as Dataset type is not supported: " + dataset.getClass().toString());
-                continue;
-            }
-        }
-*/
+        
         ddl.sort();
 
         this.setClientSideDatasets(clientSideDatasets);
