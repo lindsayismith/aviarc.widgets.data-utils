@@ -113,8 +113,10 @@ public class DataContextNodeFactory implements DefaultRenderedNodeFactory {
                 renderingContext.getNameManager(), renderingContext.getNextKID(), renderingContext.isEmbeddedScreen(),
                 renderingContext.getContainingScreenName());
 
+        String name = elementContext.getAttribute("name").getResolvedValue();
+        
         DatasetIsolatingDataContextNodeImpl dcNode = new DatasetIsolatingDataContextNodeImpl(dcRenderingContext,
-                RandomID.getShortRandomID());
+                                                                                             name);
         dcNode.addChildRenderedNodes(elementContext, dcRenderingContext);
 
         
@@ -160,6 +162,11 @@ public class DataContextNodeFactory implements DefaultRenderedNodeFactory {
         }
         if (current != null) {
             result.setCurrentRowIndex(new SetCurrentRowIndexContextImpl(currentState, current.getDatasetRowIndex()));            
+        } else {
+            // Make it the first tow
+            if (result.getRowCount() > 0) {
+                result.setCurrentRowIndex(new SetCurrentRowIndexContextImpl(currentState, 0));
+            }
         }
 
 

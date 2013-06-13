@@ -3,6 +3,7 @@
         rendered-node-factory="com.aviarc.widgets.datacontext.DataContextNodeFactory">
     <attributes>
         <attribute name="workflow"/>
+        <attribute name="name" type="name" mandatory="y"/>
     </attributes>
     <sub-elements>
         <sub-element name="workflow-parameters" singleton="y">
